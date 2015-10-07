@@ -1,0 +1,45 @@
+<div class="row-fluid">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="jumbotron">
+                    <h2 translate="MAIN.ADMIN_PANEL"></h2>
+
+                    <form novalidate class="form-horizontal">
+                        <fieldset>
+                            <legend translate="MAIN.LOGIN"></legend>
+                            <div class="form-group">
+                                <label class="control-label col-md-3" for="user_usernameOrEmail" translate="MAIN.USERNAME_OR_EMAIL"></label>
+                                <div class="col-md-9">
+                                    <input class="form-control" id="user_usernameOrEmail" type="text" ng-model="user.usernameOrEmail" size="30" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3" for="user_password" translate="MAIN.PASSWORD"></label>
+                                <div class="col-md-9">
+                                    <input class="form-control" id="user_password" size="30" type="password" ng-model="user.password" required />
+                                </div>
+                            </div>
+
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" ng-model="user.remember"> {{ 'MAIN.REMEMBER_ME' | translate }}
+                              </label>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <button class="btn btn-primary" ng-click="login(user)" translate="MAIN.LOGIN_BUTTON"></button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <p>
+                        <a href="#/" translate="MAIN.PASSWORD_LOST"></a><br>
+                    </p>
+                </div><!--/row-->
+            </div><!--/span6-->
+        </div><!--/row-->
+    </div><!--/span-->
+</div><!--/row-->

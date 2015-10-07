@@ -1,0 +1,10 @@
+{
+    "MENU" : {
+        "LANGUAGE" : "Language",
+        "ENGLISH": "English",
+        "FRENCH": "Fran&ccedil;ais"
+    },
+    "MAIN" : {
+        "PAGE_NOT_FOUND" : "The page you search doesn't exist..."
+    }
+}

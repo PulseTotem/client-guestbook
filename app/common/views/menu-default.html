@@ -1,0 +1,23 @@
+<div class="md-toolbar-tools">
+  <img src="images/logos/pulseTotem_logo_h60.png" class="pulsetotem_logo" />
+  <!-- fill up the space between left and right area -->
+  <span flex></span>
+  <md-menu>
+    <!-- Trigger element is a md-button with an icon -->
+    <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open language menu">
+      <md-icon md-svg-icon="./bower_components/material-design-icons/action/svg/production/ic_language_24px.svg"></md-icon>
+    </md-button>
+    <md-menu-content>
+      <md-menu-item>
+        <md-button ng-click="changeLanguage('en')">
+          <img src="/images/flags/en.png" class="img-responsive" aria-label="{{ 'MENU.ENGLISH' | translate }}" alt="{{ 'MENU.ENGLISH' | translate }}" /> <span translate="MENU.ENGLISH"></span>
+        </md-button>
+      </md-menu-item>
+      <md-menu-item>
+        <md-button ng-click="changeLanguage('fr')">
+          <img src="/images/flags/fr.png" class="img-responsive" aria-label="{{ 'MENU.FRENCH' | translate }}" alt="{{ 'MENU.FRENCH' | translate }}" /> <span translate="MENU.FRENCH"></span>
+        </md-button>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
+</div>
