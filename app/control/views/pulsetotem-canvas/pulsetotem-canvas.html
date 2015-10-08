@@ -1,2 +1,34 @@
 <div id="pulsetotem-canvas_container">
+  <div layout="row" class="pulsetotem-canvas_tools">
+    <md-button class="md-fab pulsetotem-canvas_drawBtn" ng-disabled="drawMode" ng-click="goToDrawMode()" aria-label="Draw">
+      <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_brush_24px.svg"></md-icon>
+    </md-button>
+    <md-button class="md-fab pulsetotem-canvas_eraseBtn" ng-disabled="eraseMode" ng-click="goToEraseMode()" aria-label="Draw">
+      <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_crop_16_9_24px.svg"></md-icon>
+    </md-button>
+    <div layout layout-fill class="pulsetotem-canvas_lineWidth">
+      <div flex="10" layout layout-align="center center">
+        <span class="md-body-1">LineWidth</span>
+      </div>
+      <md-slider flex min="1" max="50" ng-model="lineWidth" aria-label="LineWidth" id="pulsetotem-canvas_lineWidth_slider">
+      </md-slider>
+      <div flex="10" layout layout-align="center center">
+        <input flex type="number" ng-model="lineWidth" aria-label="LineWidth" aria-controls="pulsetotem-canvas_lineWidth">
+      </div>
+    </div>
+    <div layout layout-fill class="pulsetotem-canvas_colors">
+      <div flex="10" layout layout-align="center center">
+        <span class="md-body-1">Colors</span>
+      </div>
+      <md-button class="md-fab" ng-click="changeColor('blue')" style="background-color: blue;">
+        <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
+      </md-button>
+      <md-button class="md-fab" ng-click="changeColor('red')" style="background-color: red;">
+        <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
+      </md-button>
+    </div>
+    <md-button class="md-fab pulsetotem-canvas_eraseAllBtn" ng-click="eraseAll()" aria-label="eraseAll">
+      <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_rotate_left_24px.svg"></md-icon>
+    </md-button>
+  </div>
 </div>
