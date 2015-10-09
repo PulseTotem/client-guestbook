@@ -15,6 +15,12 @@ angular.module('PulseTotemControl')
       scope: {
       },
       link : function(scope, element) {
+        var isTouch = !!('ontouchstart' in window);
+
+        var drawStartEvent = isTouch ? 'touchstart' : 'mousedown';
+        var drawMoveEvent = isTouch ? 'touchmove' : 'mousemove';
+        var drawEndEvent = isTouch ? 'touchend' : 'mouseup';
+
         var width = $(element).parent().first().width();
         var height = $(element).parent().first().height();
 
@@ -69,23 +75,51 @@ angular.module('PulseTotemControl')
           tmp_canvas.hide();
         };
 
-
-
         var mouse = {x: 0, y: 0};
-        var last_mouse = {x: 0, y: 0};
+
+        var getOffset = function(elem) {
+          var offsetTop = 0;
+          var offsetLeft = 0;
+          do {
+            if ( !isNaN( elem.offsetLeft ) )
+            {
+              offsetTop += elem.offsetTop;
+              offsetLeft += elem.offsetLeft;
+            }
+            elem = elem.offsetParent;
+          } while( elem );
+          return {
+            left:offsetLeft,
+            top: offsetTop
+          };
+        };
+
+        var updateMousePos = function(e) {
+          if(isTouch){
+            mouse.x = e.originalEvent.changedTouches[0].pageX - getOffset(e.target).left;
+            mouse.y = e.originalEvent.changedTouches[0].pageY - getOffset(e.target).top;
+          } else {
+            mouse.x = e.offsetX !== undefined ? e.offsetX : e.layerX;
+            mouse.y = e.offsetY !== undefined ? e.offsetY : e.layerY;
+          }
+        };
 
         // Pencil Points
         var ppts = [];
 
         /* Mouse Capturing Work */
-        tmp_canvas.on('mousemove', function(e) {
-          mouse.x = typeof e.offsetX !== 'undefined' ? e.offsetX : e.layerX;
-          mouse.y = typeof e.offsetY !== 'undefined' ? e.offsetY : e.layerY;
+        tmp_canvas.on(drawMoveEvent, function(e) {
+          if(e){
+            e.preventDefault();
+            updateMousePos(e);
+          }
         });
 
-        canvas.on('mousemove', function(e) {
-          mouse.x = typeof e.offsetX !== 'undefined' ? e.offsetX : e.layerX;
-          mouse.y = typeof e.offsetY !== 'undefined' ? e.offsetY : e.layerY;
+        canvas.on(drawMoveEvent, function(e) {
+          if(e){
+            e.preventDefault();
+            updateMousePos(e);
+          }
         });
 
         /* Drawing on Paint App */
@@ -95,19 +129,20 @@ angular.module('PulseTotemControl')
         tmp_ctx.strokeStyle = scope.color;
         tmp_ctx.fillStyle = scope.color;
 
-        tmp_canvas.on('mousedown', function(e) {
-          tmp_canvas.on('mousemove', onPaint);
-
-          mouse.x = typeof e.offsetX !== 'undefined' ? e.offsetX : e.layerX;
-          mouse.y = typeof e.offsetY !== 'undefined' ? e.offsetY : e.layerY;
+        tmp_canvas.on(drawStartEvent, function(e) {
+          tmp_canvas.on(drawMoveEvent, onPaint);
+          if(e){
+            e.preventDefault();
+            updateMousePos(e);
+          }
 
           ppts.push({x: mouse.x, y: mouse.y});
 
           onPaint();
         });
 
-        tmp_canvas.on('mouseup', function() {
-          tmp_canvas.off('mousemove', onPaint);
+        tmp_canvas.on(drawEndEvent, function(e) {
+          tmp_canvas.off(drawMoveEvent, onPaint);
 
           ctx.globalCompositeOperation = 'source-over';
 
@@ -163,19 +198,21 @@ angular.module('PulseTotemControl')
           tmp_ctx.stroke();
         };
 
-        canvas.on('mousedown', function(e) {
-          canvas.on('mousemove', onErase);
+        canvas.on(drawStartEvent, function(e) {
+          canvas.on(drawMoveEvent, onErase);
 
-          mouse.x = typeof e.offsetX !== 'undefined' ? e.offsetX : e.layerX;
-          mouse.y = typeof e.offsetY !== 'undefined' ? e.offsetY : e.layerY;
+          if(e){
+            e.preventDefault();
+            updateMousePos(e);
+          }
 
           ppts.push({x: mouse.x, y: mouse.y});
 
           onErase();
         });
 
-        canvas.on('mouseup', function() {
-          canvas.off('mousemove', onErase);
+        canvas.on(drawEndEvent, function(e) {
+          canvas.off(drawMoveEvent, onErase);
 
           // Emptying up Pencil Points
           ppts = [];
