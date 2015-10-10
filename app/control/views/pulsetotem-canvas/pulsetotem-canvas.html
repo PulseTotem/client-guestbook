@@ -6,7 +6,7 @@
           <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/production/ic_menu_24px.svg"></md-icon>
         </md-button>
         <h2>
-          <span>Tools</span>
+          <span>{{'PULSETOTEM_CANVAS.TOOLS' | translate}}</span>
         </h2>
         <span flex></span>
         <md-button ng-click="toggleToolsPanel()" aria-label="Close">
@@ -26,33 +26,56 @@
           <md-button class="md-fab pulsetotem-canvas_eraseAllBtn" ng-click="eraseAll()" aria-label="eraseAll">
             <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_rotate_left_24px.svg"></md-icon>
           </md-button>
+          <div flex></div>
+          <md-button class="md-fab pulsetotem-canvas_saveBtn" ng-click="save()" aria-label="save">
+            <md-icon md-svg-src="./bower_components/material-design-icons/action/svg/production/ic_done_24px.svg"></md-icon>
+          </md-button>
         </div>
         <div layout="row">
-          <div flex="10" layout layout-align="center center">
-            <span class="md-body-1">LineWidth</span>
-          </div>
-          <div flex="10" layout layout-align="center center">
-            <input flex type="number" ng-model="lineWidth" aria-label="LineWidth" aria-controls="pulsetotem-canvas_lineWidth">
-          </div>
+          <span class="md-body-1">{{'PULSETOTEM_CANVAS.LINEWIDTH' | translate}} ({{lineWidth}})</span>
         </div>
         <div layout="row">
           <md-slider flex min="1" max="50" ng-model="lineWidth" aria-label="LineWidth" id="pulsetotem-canvas_lineWidth_slider">
           </md-slider>
         </div>
         <div layout="row">
-          <span class="md-body-1">Colors</span>
+          <span class="md-body-1">{{'PULSETOTEM_CANVAS.COLORS' | translate}}</span>
         </div>
-        <div layout layout-fill class="pulsetotem-canvas_colors">
-          <md-button class="md-fab" ng-click="changeColor('blue')" style="background-color: blue;">
+        <div layout="row" layout-wrap class="pulsetotem-canvas_colors">
+          <md-button class="md-fab" ng-click="changeColor('#000000')" style="background-color: #000000;" aria-label="color #000000">
             <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
           </md-button>
-          <md-button class="md-fab" ng-click="changeColor('red')" style="background-color: red;">
+          <md-button class="md-fab" ng-click="changeColor('#FFFFFF')" style="background-color: #FFFFFF;" aria-label="color #FFFFFF">
+            <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg" style="color: black;"></md-icon>
+          </md-button>
+          <md-button class="md-fab" ng-click="changeColor('#FEFA4E')" style="background-color: #FEFA4E;" aria-label="color #FEFA4E">
+            <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg" style="color: black;"></md-icon>
+          </md-button>
+          <md-button class="md-fab" ng-click="changeColor('#FF912D')" style="background-color: #FF912D;" aria-label="color #FF912D">
             <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
           </md-button>
-          <md-button class="md-fab" ng-click="changeColor('orange')" style="background-color: orange;">
+          <md-button class="md-fab" ng-click="changeColor('#FF1213')" style="background-color: #FF1213;" aria-label="color #FF1213">
             <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
           </md-button>
-          <md-button class="md-fab" ng-click="changeColor('purple')" style="background-color: purple;">
+          <md-button class="md-fab" ng-click="changeColor('#96104F')" style="background-color: #96104F;" aria-label="color #96104F">
+            <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-fab" ng-click="changeColor('#993AF6')" style="background-color: #993AF6;" aria-label="color #993AF6">
+            <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-fab" ng-click="changeColor('#DB83F8')" style="background-color: #DB83F8;" aria-label="color #DB83F8">
+            <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-fab" ng-click="changeColor('#0099F9')" style="background-color: #0099F9;" aria-label="color #0099F9">
+            <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-fab" ng-click="changeColor('#1E39F6')" style="background-color: #1E39F6;" aria-label="color #1E39F6">
+            <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-fab" ng-click="changeColor('#00FF33')" style="background-color: #00FF33;" aria-label="color #00FF33">
+            <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-fab" ng-click="changeColor('#00CC33')" style="background-color: #00CC33;" aria-label="color #00CC33">
             <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
           </md-button>
         </div>

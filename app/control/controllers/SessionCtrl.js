@@ -23,6 +23,10 @@ angular.module('PulseTotemControl')
       guestBookSocket.emit("NewContent", {'drawContent': drawContent});
     };
 
+    $scope.saveToGuestBookSocket = function(drawContent) {
+      guestBookSocket.emit("SaveContent", {'drawContent': drawContent});
+    };
+
     var initSession = function() {
       guestBookSocket.on("LockedControl", function (response) {
         callbackManager(response, function (sessionDesc) {

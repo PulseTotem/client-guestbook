@@ -5,7 +5,10 @@
   <div ng-if="waiting">
     Someone has already the control on the screen. Waiting a moment before your turn.
   </div>
-  <div ng-if="!waiting" id="canvasContainer">
+  <!-- div ng-if="!waiting" id="canvasContainer">
     <pulsetotem-canvas after-each-end-draw="sendToGuestBookSocket"></pulsetotem-canvas>
-  </div>
+  </div-->
+</div>
+<div id="canvasContainer">
+  <pulsetotem-canvas after-each-end-draw="sendToGuestBookSocket" save-action="saveToGuestBookSocket"></pulsetotem-canvas>
 </div>

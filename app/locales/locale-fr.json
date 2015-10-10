@@ -6,5 +6,10 @@
   },
   "MAIN" : {
     "PAGE_NOT_FOUND" : "La page que vous recherchez n'existe pas..."
+  },
+  "PULSETOTEM_CANVAS" : {
+    "TOOLS" : "Outils",
+    "LINEWIDTH" : "Epaisseur",
+    "COLORS" : "Couleurs"
   }
 }

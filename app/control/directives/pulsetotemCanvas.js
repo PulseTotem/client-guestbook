@@ -13,7 +13,8 @@ angular.module('PulseTotemControl')
       transclude: true,
       replace: true,
       scope: {
-        afterEachEndDraw: '&'
+        afterEachEndDraw: '&',
+        saveAction : '&'
       },
       link : function(scope, element) {
         //NavBar
@@ -82,6 +83,11 @@ angular.module('PulseTotemControl')
           scope.afterEachEndDraw()(theDataURL);
         };
 
+        scope.save = function() {
+          var theDataURL = canvas[0].toDataURL();
+          scope.saveAction()(theDataURL);
+        }
+
         var ctx = canvas[0].getContext('2d');
         var tmp_ctx = tmp_canvas[0].getContext('2d');
 
@@ -100,6 +106,7 @@ angular.module('PulseTotemControl')
 
         scope.changeColor = function(newColor) {
           scope.color = newColor;
+          scope.toggleToolsPanel();
         };
 
         scope.eraseAll = function() {
