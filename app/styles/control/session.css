@@ -5,6 +5,8 @@
   bottom: 0;
   left: 0;
   z-index: 10;
+  background-image: url('http://cdn.the6thscreen.fr/guestbook/background.jpg');
+  background-size: cover;
 }
 
 #drawCanvas {
@@ -14,6 +16,10 @@
 
 .pulsetotem-canvas_tools {
 
+}
+
+.pulsetotem-canvas_toolsPanelMenu {
+  position: absolute;
 }
 
 #pulsetotem-canvas_lineWidth_slider {

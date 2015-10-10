@@ -1,34 +1,66 @@
 <div id="pulsetotem-canvas_container">
-  <div layout="row" class="pulsetotem-canvas_tools">
-    <md-button class="md-fab pulsetotem-canvas_drawBtn" ng-disabled="drawMode" ng-click="goToDrawMode()" aria-label="Draw">
-      <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_brush_24px.svg"></md-icon>
-    </md-button>
-    <md-button class="md-fab pulsetotem-canvas_eraseBtn" ng-disabled="eraseMode" ng-click="goToEraseMode()" aria-label="Draw">
-      <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_crop_16_9_24px.svg"></md-icon>
-    </md-button>
-    <div layout layout-fill class="pulsetotem-canvas_lineWidth">
-      <div flex="10" layout layout-align="center center">
-        <span class="md-body-1">LineWidth</span>
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="toolsPanel">
+    <md-toolbar class="md-theme-indigo">
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Tools">
+          <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/production/ic_menu_24px.svg"></md-icon>
+        </md-button>
+        <h2>
+          <span>Tools</span>
+        </h2>
+        <span flex></span>
+        <md-button ng-click="toggleToolsPanel()" aria-label="Close">
+          <md-icon md-svg-src="./bower_components/material-design-icons/navigation/svg/production/ic_close_24px.svg"></md-icon>
+        </md-button>
       </div>
-      <md-slider flex min="1" max="50" ng-model="lineWidth" aria-label="LineWidth" id="pulsetotem-canvas_lineWidth_slider">
-      </md-slider>
-      <div flex="10" layout layout-align="center center">
-        <input flex type="number" ng-model="lineWidth" aria-label="LineWidth" aria-controls="pulsetotem-canvas_lineWidth">
+    </md-toolbar>
+    <md-content layout-padding>
+      <div layout="column" class="pulsetotem-canvas_tools">
+        <div layout="row">
+          <md-button class="md-fab pulsetotem-canvas_drawBtn" ng-disabled="drawMode" ng-click="goToDrawMode()" aria-label="Draw">
+            <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_brush_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-fab pulsetotem-canvas_eraseBtn" ng-disabled="eraseMode" ng-click="goToEraseMode()" aria-label="Draw">
+            <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_crop_16_9_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-fab pulsetotem-canvas_eraseAllBtn" ng-click="eraseAll()" aria-label="eraseAll">
+            <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_rotate_left_24px.svg"></md-icon>
+          </md-button>
+        </div>
+        <div layout="row">
+          <div flex="10" layout layout-align="center center">
+            <span class="md-body-1">LineWidth</span>
+          </div>
+          <div flex="10" layout layout-align="center center">
+            <input flex type="number" ng-model="lineWidth" aria-label="LineWidth" aria-controls="pulsetotem-canvas_lineWidth">
+          </div>
+        </div>
+        <div layout="row">
+          <md-slider flex min="1" max="50" ng-model="lineWidth" aria-label="LineWidth" id="pulsetotem-canvas_lineWidth_slider">
+          </md-slider>
+        </div>
+        <div layout="row">
+          <span class="md-body-1">Colors</span>
+        </div>
+        <div layout layout-fill class="pulsetotem-canvas_colors">
+          <md-button class="md-fab" ng-click="changeColor('blue')" style="background-color: blue;">
+            <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-fab" ng-click="changeColor('red')" style="background-color: red;">
+            <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-fab" ng-click="changeColor('orange')" style="background-color: orange;">
+            <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
+          </md-button>
+          <md-button class="md-fab" ng-click="changeColor('purple')" style="background-color: purple;">
+            <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
+          </md-button>
+        </div>
       </div>
-    </div>
-    <div layout layout-fill class="pulsetotem-canvas_colors">
-      <div flex="10" layout layout-align="center center">
-        <span class="md-body-1">Colors</span>
-      </div>
-      <md-button class="md-fab" ng-click="changeColor('blue')" style="background-color: blue;">
-        <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
-      </md-button>
-      <md-button class="md-fab" ng-click="changeColor('red')" style="background-color: red;">
-        <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
-      </md-button>
-    </div>
-    <md-button class="md-fab pulsetotem-canvas_eraseAllBtn" ng-click="eraseAll()" aria-label="eraseAll">
-      <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_rotate_left_24px.svg"></md-icon>
-    </md-button>
-  </div>
+    </md-content>
+  </md-sidenav>
+
+  <md-button class="md-fab pulsetotem-canvas_toolsPanelMenu" ng-click="toggleToolsPanel()" aria-label="ToolsPanel">
+    <md-icon md-svg-src="./bower_components/material-design-icons/navigation/svg/production/ic_menu_24px.svg"></md-icon>
+  </md-button>
 </div>

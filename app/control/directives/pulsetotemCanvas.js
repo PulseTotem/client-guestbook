@@ -7,14 +7,49 @@
  * # pulsetotemCanvas
  */
 angular.module('PulseTotemControl')
-  .directive('pulsetotemCanvas', [ function() {
+  .directive('pulsetotemCanvas', [ '$timeout', '$mdSidenav', function($timeout, $mdSidenav) {
     return {
       restrict: 'E',
       transclude: true,
       replace: true,
       scope: {
+        afterEachEndDraw: '&'
       },
       link : function(scope, element) {
+        //NavBar
+
+        /**
+         * Supplies a function that will continue to operate until the
+         * time is up.
+         */
+        var debounce = function(func, wait, context) {
+          var timer;
+          return function debounced() {
+            var context = scope,
+              args = Array.prototype.slice.call(arguments);
+            $timeout.cancel(timer);
+            timer = $timeout(function() {
+              timer = undefined;
+              func.apply(context, args);
+            }, wait || 10);
+          };
+        };
+
+        /**
+         * Build handler to open/close a SideNav; when animation finishes
+         * report completion in console
+         */
+        var buildToggler = function(navID) {
+          return debounce(function() {
+            $mdSidenav(navID).
+              toggle();
+          }, 200);
+        };
+
+        scope.toggleToolsPanel = buildToggler('toolsPanel');
+
+
+        //Canvas
         var isTouch = !!('ontouchstart' in window);
 
         var drawStartEvent = isTouch ? 'touchstart' : 'mousedown';
@@ -27,7 +62,6 @@ angular.module('PulseTotemControl')
         var canvas = $("<canvas>");
         canvas.attr("width",  width + "px");
         canvas.attr("height", height + "px");
-        canvas.css("background-color", "lightcyan");
         $(element).first().append(canvas);
 
         // Creating a tmp canvas
@@ -35,12 +69,18 @@ angular.module('PulseTotemControl')
         tmp_canvas.attr("width",  width + "px");
         tmp_canvas.attr("height", height + "px");
         tmp_canvas.css("position", "absolute");
-        tmp_canvas.css("top", "68px");
+        tmp_canvas.css("top", 0);
         tmp_canvas.css("right", 0);
         tmp_canvas.css("bottom", 0);
         tmp_canvas.css("left", 0);
         tmp_canvas.css("cursor", "crosshair");
         $(element).first().append(tmp_canvas);
+
+        //Function called after each 'end drawing' or 'end erasing'
+        var endDrawing = function() {
+          var theDataURL = canvas[0].toDataURL();
+          scope.afterEachEndDraw()(theDataURL);
+        };
 
         var ctx = canvas[0].getContext('2d');
         var tmp_ctx = tmp_canvas[0].getContext('2d');
@@ -153,6 +193,8 @@ angular.module('PulseTotemControl')
 
           // Emptying up Pencil Points
           ppts = [];
+
+          endDrawing();
         });
 
         var onPaint = function() {
@@ -216,6 +258,8 @@ angular.module('PulseTotemControl')
 
           // Emptying up Pencil Points
           ppts = [];
+
+          endDrawing();
         });
 
         var onErase = function() {

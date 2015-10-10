@@ -16,9 +16,11 @@ angular.module('PulseTotemControl')
     var initDraw = function() {
       if(! $scope.drawing) {
         $scope.drawing = true;
-
-
       }
+    };
+
+    $scope.sendToGuestBookSocket = function(drawContent) {
+      guestBookSocket.emit("NewContent", {'drawContent': drawContent});
     };
 
     var initSession = function() {
