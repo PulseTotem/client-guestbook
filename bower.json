@@ -1,6 +1,6 @@
 {
   "name": "pulsetotem-client-guestbook",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "dependencies": {
     "angular": "=1.3.15",
     "angular-animate": "<=1.3.0",
