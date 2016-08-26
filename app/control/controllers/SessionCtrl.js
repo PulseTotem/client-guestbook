@@ -12,6 +12,7 @@ angular.module('PulseTotemControl')
     $scope.connected = false;
     $scope.waiting = true;
     $scope.drawing = false;
+    $scope.backgroundImage = {"background-image": "url('http://cdn.the6thscreen.fr/guestbook/background.jpg')"};
 
     var initDraw = function() {
       if(! $scope.drawing) {
@@ -58,6 +59,19 @@ angular.module('PulseTotemControl')
           function (fail) {
             console.error(fail);
             console.error("An error occurred during Taking Control on Screen.");
+          }
+        );
+      });
+
+      guestBookSocket.on("SetBackground", function (response) {
+        callbackManager(response, function (backgroundInfo) {
+            $scope.$apply(function () {
+              $scope.backgroundImage = {"background-image": "url('"+backgroundInfo.backgroundURL+"')"};
+            });
+          },
+          function (fail) {
+            console.error(fail);
+            console.error("An error occurred during set background.");
           }
         );
       });
