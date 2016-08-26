@@ -1,0 +1,15 @@
+{
+  "MENU" : {
+    "LANGUAGE" : "Langage",
+    "ENGLISH": "English",
+    "FRENCH": "Fran&ccedil;ais"
+  },
+  "MAIN" : {
+    "PAGE_NOT_FOUND" : "La page que vous recherchez n'existe pas..."
+  },
+  "PULSETOTEM_CANVAS" : {
+    "TOOLS" : "Outils",
+    "LINEWIDTH" : "Epaisseur",
+    "COLORS" : "Couleurs"
+  }
+}
