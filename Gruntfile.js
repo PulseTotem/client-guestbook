@@ -74,6 +74,13 @@ module.exports = function (grunt) {
         }
     },
 
+
+// ---------------------------------------------
+//                                    bump task
+// ---------------------------------------------
+    bumpup: ['bower.json', 'package.json'],
+// ---------------------------------------------
+
     // The actual grunt server settings
     connect: {
       options: {
