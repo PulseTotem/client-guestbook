@@ -24,6 +24,10 @@ angular
         templateUrl: '../control/views/session.html',
         controller: 'PulseTotemControl.SessionCtrl'
       })
+      .when('/profil/:profilid', {
+        templateUrl: '../control/views/profil.html',
+        controller: 'PulseTotemControl.ProfilCtrl'
+      })
 
       // Routes for authentication
       .when('/login', {

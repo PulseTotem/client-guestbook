@@ -21,3 +21,12 @@ body {
 .pulsetotem_logo {
   height: 100%;
 }
+
+.control_panel {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}

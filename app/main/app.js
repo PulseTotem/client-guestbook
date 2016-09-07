@@ -26,11 +26,15 @@ angular
         $locationProvider.html5Mode(true).hashPrefix('!');
     }])
     .config(['$mdThemingProvider', function($mdThemingProvider) {
-      $mdThemingProvider.theme('default')
+      /*$mdThemingProvider.theme('default')
         .primaryPalette('blue-grey', {
           'default' : '600'
         })
-        .accentPalette('blue');
+        .accentPalette('blue');*/
+
+      $mdThemingProvider.theme('default')
+        .primaryPalette('orange')
+        .accentPalette('deep-purple');
     }])
     /*.run(['$rootScope', '$location', '$cookies', '$http', 'CONSTANTS', 'backendSocket', '$route', function($rootScope, $location, $cookies, $http, CONSTANTS, backendSocket, $route) {
       $rootScope.header = "home";
