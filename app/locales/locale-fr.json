@@ -11,5 +11,9 @@
     "TOOLS" : "Outils",
     "LINEWIDTH" : "Epaisseur",
     "COLORS" : "Couleurs"
+  },
+  "GUESTBOOK" : {
+    "TITLE" : "Livre d'or",
+    "WRITE" : "Ecrire ou dessiner un message"
   }
 }

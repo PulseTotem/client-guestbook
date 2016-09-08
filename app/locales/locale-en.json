@@ -11,5 +11,9 @@
       "TOOLS" : "Tools",
       "LINEWIDTH" : "Line Width",
       "COLORS" : "Colors"
+    },
+    "GUESTBOOK" : {
+      "TITLE" : "Guestbook",
+      "WRITE" : "Write or draw a message"
     }
 }
