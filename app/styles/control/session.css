@@ -24,3 +24,8 @@
 #pulsetotem-canvas_lineWidth_slider {
   margin-top: 10px;
 }
+
+.pulsetotem-canvas_saveBtn {
+  position: absolute;
+  right: 10px;
+}

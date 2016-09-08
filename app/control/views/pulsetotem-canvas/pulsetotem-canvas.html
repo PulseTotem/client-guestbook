@@ -3,7 +3,7 @@
     <md-toolbar class="md-theme-indigo">
       <div class="md-toolbar-tools">
         <md-button class="md-icon-button" aria-label="Tools">
-          <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/production/ic_menu_24px.svg"></md-icon>
+          <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
         </md-button>
         <h2>
           <span>{{'PULSETOTEM_CANVAS.TOOLS' | translate}}</span>
@@ -27,9 +27,6 @@
             <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_rotate_left_24px.svg"></md-icon>
           </md-button>
           <div flex></div>
-          <md-button class="md-fab pulsetotem-canvas_saveBtn" ng-click="save()" aria-label="save">
-            <md-icon md-svg-src="./bower_components/material-design-icons/action/svg/production/ic_done_24px.svg"></md-icon>
-          </md-button>
         </div>
         <div layout="row">
           <span class="md-body-1">{{'PULSETOTEM_CANVAS.LINEWIDTH' | translate}} ({{lineWidth}})</span>
@@ -83,7 +80,11 @@
     </md-content>
   </md-sidenav>
 
-  <md-button class="md-fab pulsetotem-canvas_toolsPanelMenu" ng-click="toggleToolsPanel()" aria-label="ToolsPanel">
-    <md-icon md-svg-src="./bower_components/material-design-icons/navigation/svg/production/ic_menu_24px.svg"></md-icon>
+  <md-button class="md-fab md-primary pulsetotem-canvas_toolsPanelMenu" ng-click="toggleToolsPanel()" aria-label="ToolsPanel">
+    <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_palette_24px.svg"></md-icon>
+  </md-button>
+
+  <md-button class="md-fab md-primary pulsetotem-canvas_saveBtn" ng-click="save()" aria-label="save">
+    <md-icon md-svg-src="./bower_components/material-design-icons/content/svg/production/ic_save_24px.svg"></md-icon>
   </md-button>
 </div>

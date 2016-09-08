@@ -7,8 +7,8 @@
   </div>
   <div ng-if="!drawing">
     <div layout="column" class="control_panel" ng-style="backgroundImage">
-      <div layout="row" layout-align="center center">
-        <md-button class="md-raised md-accent" ng-click="letsDraw()">
+      <div layout="row" layout-align="center center" class="control_panel_container">
+        <md-button class="md-raised md-primary" ng-click="letsDraw()">
           <md-icon md-svg-src="./bower_components/material-design-icons/image/svg/production/ic_brush_24px.svg"></md-icon>
           {{'GUESTBOOK.WRITE' | translate}}
         </md-button>
