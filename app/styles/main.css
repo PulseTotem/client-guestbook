@@ -30,3 +30,12 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.control_panel_container {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.control_panel_container button {
+  height: 100px;
+}

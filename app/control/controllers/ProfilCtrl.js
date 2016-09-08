@@ -68,9 +68,7 @@ angular.module('PulseTotemControl')
 
       guestBookSocket.on("SetBackground", function (response) {
         callbackManager(response, function (backgroundInfo) {
-            $scope.$apply(function () {
-              $scope.backgroundImage = {"background-image": "url('"+backgroundInfo.backgroundURL+"')"};
-            });
+            $scope.backgroundImage = {"background-image": "url('"+backgroundInfo.backgroundURL+"')"};
           },
           function (fail) {
             console.error(fail);
